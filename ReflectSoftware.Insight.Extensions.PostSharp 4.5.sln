@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{5083DB16-D99D-48E4-8B72-90F9AFD54F7C}"
+	ProjectSection(SolutionItems) = preProject
+		Build.ps1 = Build.ps1
+		CHANGES.md = CHANGES.md
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectSoftware.Insight.Extensions.PostSharp 4.5", "src\ReflectSoftware.Insight.Extensions.PostSharp 4.5.csproj", "{B8EEC6FD-D82D-4E85-807D-1BAC7BF19FFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8EEC6FD-D82D-4E85-807D-1BAC7BF19FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EEC6FD-D82D-4E85-807D-1BAC7BF19FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EEC6FD-D82D-4E85-807D-1BAC7BF19FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EEC6FD-D82D-4E85-807D-1BAC7BF19FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
