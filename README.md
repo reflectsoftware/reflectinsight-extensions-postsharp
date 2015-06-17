@@ -28,7 +28,66 @@ At a field level traceability, changing field values will only be shown in the V
 
 ## Getting Started
 
-Coming soon...
+```powershell
+Install-Package ReflectSoftware.Insight.Extensions.PostSharp
+```
+
+Then in your app.config or web.config file, add the following configuration sections:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>    
+    <section name="insightSettings" type="ReflectSoftware.Insight.ConfigurationHandler,ReflectSoftware.Insight" />
+  </configSections>
+
+  <insightSettings>
+    <baseSettings>
+      <configChange enabled="true" />
+      <enable state="all" />
+      <propagateException enabled="false" />
+      <global category="ReflectInsight" />
+      <exceptionEventTracker time="20" />
+      <requestObject requestLifeSpan="10" />
+      <debugMessageProcess enabled="true" />
+    </baseSettings>
+
+    <listenerGroups active="Debug">
+      <group name="Debug" enabled="true" maskIdentities="false">
+        <destinations>
+          <destination name="Viewer" enabled="true" filter="" details="Viewer" />
+        </destinations>
+      </group>
+    </listenerGroups>
+    <logManager>
+      <!-- used by the PostSharp Tracer Test -->
+      <instance name="fields" />
+      <instance name="serviceClass" category="ServiceLayer" />
+      <instance name="businessClass" category="BusinessLayer" />
+      <instance name="dataAccessClass" category="DataAccessLayer" />
+    </logManager>
+
+    <!--
+		tracer properties = "None|MethodName|Parameters|HashedParameters|IgnoreExceptions" - default: MethodName
+    
+    None - will get nothing
+    MethodName - will only show method name without parameters ( default )
+    Parameters - will show method name and parameters but only for primitve types
+    HashedParameters - will show method name but hash all parameter values
+    IgnoreExceptions - will ignore logging exceptions between enter/exit block    
+		-->
+
+    <extensions>
+      <extension name="tracer.fields" instance="fields" />
+      <extension name="tracer.service" instance="serviceClass" properties="MethodName" />
+      <extension name="tracer.business" instance="businessClass" properties="Parameters" />
+      <extension name="tracer.dataAccess" instance="dataAccessClass" properties="HashedParameters" />
+    </extensions>
+  </insightSettings>   
+</configuration>
+```
+
+Additional configuration details for the ReflectSoftware.Insight.Extensions.PostSharp logging extension can be found [here](https://reflectsoftware.atlassian.net/wiki/display/RI5/PostSharp+Extension).
 
 ## Additional Resources
 
