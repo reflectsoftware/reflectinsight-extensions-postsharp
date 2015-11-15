@@ -17,6 +17,7 @@ function Set-AssemblyVersions($informational, $assembly)
 
 function Install-NuGetPackages($solution)
 {
+	(New-Object Net.WebClient).DownloadFile('https://www.nuget.org/nuget.exe', 'C:\Tools\NuGet\NuGet.exe')
     nuget restore $solution
 }
 
@@ -39,14 +40,22 @@ function Invoke-NuGetPackProj($csproj)
 
 function Invoke-NuGetPackSpec($nuspec, $version)
 {
-    nuget pack $nuspec -Version $version -OutputDirectory ..\..\
+    nuget pack $nuspec -Version $version -OutputDirectory ..\
 }
 
 function Invoke-NuGetPack($version)
 {
-    ls src/**/*.csproj |
+    #ls src/**/*.csproj |
+    #    Where-Object { -not ($_.Name -like "*net40*") } |
+    #    ForEach-Object { Invoke-NuGetPackProj $_ }
+		
+		ls src/**/*.csproj |
         Where-Object { -not ($_.Name -like "*net40*") } |
         ForEach-Object { Invoke-NuGetPackProj $_ }
+
+    pushd .\src
+    Invoke-NuGetPackSpec "ReflectSoftware.Insight.Listeners.Email.nuspec" $version
+    popd
 }
 
 function Invoke-Build($project, $majorMinor, $patch, $customLogger, $notouch)
@@ -81,14 +90,14 @@ function Invoke-Build($project, $majorMinor, $patch, $customLogger, $notouch)
 
 $ErrorActionPreference = "Stop"
 
-if (-not $sln)
-{
-    $slnfull = ls *.sln |
-        Where-Object { -not ($_.Name -like "*net40*") } |
-        Select -first 1
-
-    $sln = $slnfull.BaseName
-}
+#if (-not $sln)
+#{
+#    $slnfull = ls *.sln |
+#        Where-Object { -not ($_.Name -like "*net40*") } |
+#        Select -first 1
+#
+#    $sln = $slnfull.BaseName
+#}
 
 Invoke-Build $project $majorMinor $patch $customLogger $notouch
 
