@@ -8,7 +8,7 @@
         <owners>ReflectSoftware Inc.</owners>
         <licenseUrl>https://github.com/reflectsoftware/reflectinsight-extensions-postsharp/blob/master/LICENSE.md</licenseUrl>
         <projectUrl>https://github.com/reflectsoftware/reflectinsight-extensions-postsharp</projectUrl>
-        <iconUrl>http://reflectsoftware.com/images/ri_logo_green.ico</iconUrl>
+        <iconUrl>http://reflectsoftware.com/images/ReflectInsight-Element-256.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>We've added support for PostSharp. This allows you to leverage your current investment in PostSharp, but leverage the power and flexibility that comes with the ReflectInsight viewer. 
 
@@ -22,16 +22,16 @@ You can view your EntLib messages in realtime, in a rich viewer that allows you 
         <copyright>© 2015 ReflectSoftware Inc.</copyright>
         <tags>Preflectinsight logging log logfiles events postsharp aop aspect interceptor interception dependency di monitoring instrumentation exception handling structured tracing trace debug diagnostic</tags>
         <dependencies>
-            <dependency id="PostSharp" version="4.0.36" />
-            <dependency id="ReflectSoftware.Insight" version="5.5.1" />
+            <dependency id="PostSharp" version="4.1.26" />
+            <dependency id="ReflectSoftware.Insight" version="5.5.2" />
         </dependencies>
         <references>
             <reference file="ReflectSoftware.Insight.Extensions.PostSharp.dll" />
         </references>
     </metadata>
     <files>
-        <file src="bin\release\net20\ReflectSoftware.Insight.Extensions.PostSharp.dll" target="lib\net20\ReflectSoftware.Insight.Extensions.PostSharp.dll" />
-        <file src="bin\release\net40\ReflectSoftware.Insight.Extensions.PostSharp.dll" target="lib\net40\ReflectSoftware.Insight.Extensions.PostSharp.dll" />
-        <file src="bin\release\net45\ReflectSoftware.Insight.Extensions.PostSharp.dll" target="lib\net45\ReflectSoftware.Insight.Extensions.PostSharp.dll" />
+        <file src="bin\release\net20\ReflectSoftware.Insight.Extensions.PostSharp.dll" target="lib\net20" />
+        <file src="bin\release\net40\ReflectSoftware.Insight.Extensions.PostSharp.dll" target="lib\net40" />
+        <file src="bin\release\net45\ReflectSoftware.Insight.Extensions.PostSharp.dll" target="lib\net45" />
     </files>
 </package>
