@@ -1,6 +1,7 @@
 # ReflectInsight-Extensions-PostSharp
 
 [![Build status](https://ci.appveyor.com/api/projects/status/github/reflectsoftware/reflectinsight-extensions-postsharp?svg=true)](https://ci.appveyor.com/project/reflectsoftware/reflectinsight-extensions-postsharp)
+[![License](https://img.shields.io/:license-MS--PL-blue.svg)](https://github.com/reflectsoftware/reflectinsight-extensions-postsharp/license.md)
 [![Release](https://img.shields.io/github/release/reflectsoftware/reflectinsight-extensions-PostSharp.svg)](https://github.com/reflectsoftware/reflectinsight-extensions-PostSharp/releases/latest)
 [![NuGet Version](http://img.shields.io/nuget/v/reflectsoftware.insight.extensions.PostSharp.svg?style=flat)](http://www.nuget.org/packages/ReflectSoftware.Insight.Extensions.PostSharp/)
 [![NuGet](https://img.shields.io/nuget/dt/reflectsoftware.insight.extensions.PostSharp.svg)](http://www.nuget.org/packages/ReflectSoftware.Insight.Extensions.PostSharp/)
