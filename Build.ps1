@@ -54,7 +54,7 @@ function Invoke-NuGetPack($version)
         ForEach-Object { Invoke-NuGetPackProj $_ }
 
     pushd .\src
-    Invoke-NuGetPackSpec "ReflectSoftware.Insight.Listeners.Email.nuspec" $version
+    Invoke-NuGetPackSpec "ReflectSoftware.Insight.Extensions.PostSharp.nuspec" $version
     popd
 }
 
