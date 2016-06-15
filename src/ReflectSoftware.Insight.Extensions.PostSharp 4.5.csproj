@@ -49,7 +49,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Build\Libraries\NET4.5\</OutputPath>
+    <OutputPath>bin\debug\net45\</OutputPath>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -61,7 +61,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Build\Libraries\NET4.5\</OutputPath>
+    <OutputPath>bin\release\net45\</OutputPath>
     <DefineConstants>TRACE;POSTSHARP_CONSTRAINTS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
