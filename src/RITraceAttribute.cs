@@ -18,7 +18,7 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
     [RITraceAttribute(AttributeExclude = true)]
     public class RITraceAttribute : OnMethodBoundaryAspect, IRITrace
     {
-        public ReflectInsight Logger { get; internal set; }
+        public IReflectInsight Logger { get; internal set; }
 
         public String Name { get; internal set; }
 
@@ -29,18 +29,31 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
         private Boolean IsDisplayFlagNone;
         private String ClassName;
 
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RITraceAttribute"/> class.
+        /// </summary>
+        /// <param name="extension">The extension.</param>
         public RITraceAttribute(String extension)
         {
             Name = extension ?? String.Empty;
             IsNameNullOrEmpty = StringHelper.IsNullOrEmpty(Name);            
             Logger = null;
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RITraceAttribute"/> class.
+        /// </summary>
         public RITraceAttribute(): this(null)
         {
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Method invoked at build time to initialize the instance fields of the current aspect. This method is invoked
+        /// before any other build-time method.
+        /// </summary>
+        /// <param name="method">Method to which the current aspect is applied</param>
+        /// <param name="aspectInfo">Reserved for future usage.</param>
         public override void CompileTimeInitialize(MethodBase method, AspectInfo aspectInfo)
         {
             base.CompileTimeInitialize(method, aspectInfo);
@@ -53,7 +66,11 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
                 ClassName = ClassName.Remove(0, idx + 1);
             }
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Initializes the current aspect.
+        /// </summary>
+        /// <param name="method">Method to which the current aspect is applied.</param>
         public override void RuntimeInitialize(MethodBase method)
         {
             base.RuntimeInitialize(method);
@@ -61,12 +78,17 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
             Logger = null;
 
             if (IsNameNullOrEmpty)
+            {
                 return;
+            }
 
             OnConfigFileChange();
             RIEventManager.OnServiceConfigChange += OnConfigFileChange;
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Called when [configuration file change].
+        /// </summary>
         protected void OnConfigFileChange()
         {
             try
@@ -114,11 +136,17 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
                 RIExceptionManager.Publish(ex, "Failed during: RITracerAttribute.OnConfigFileChange()");
             }
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Called when [entry].
+        /// </summary>
+        /// <param name="methodArgs">The method arguments.</param>
         public override void OnEntry(MethodExecutionArgs methodArgs)
         {
             if (IsNameNullOrEmpty)
+            {
                 return;
+            }
 
             RITraceManager.EnterMethod(this);
 
@@ -127,11 +155,17 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
                 Logger.EnterMethod(TraceMethodHelper.GetMethodName(ClassName, methodArgs, DisplayFlags, out ReturnInfo));
             }
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Called when [exit].
+        /// </summary>
+        /// <param name="methodArgs">The method arguments.</param>
         public override void OnExit(MethodExecutionArgs methodArgs)
         {
             if (IsNameNullOrEmpty)
+            {
                 return;
+            }
 
             try
             {
@@ -145,7 +179,11 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
                 RITraceManager.ExitMethod();
             }
         }
-        ///--------------------------------------------------------------------
+
+        /// <summary>
+        /// Called when [exception].
+        /// </summary>
+        /// <param name="methodArgs">The method arguments.</param>
         public override void OnException(MethodExecutionArgs methodArgs)
         {
             if (IsNameNullOrEmpty || IgnoreExceptions)

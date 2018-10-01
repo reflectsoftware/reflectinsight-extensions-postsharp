@@ -2,7 +2,7 @@
 // Assembly         : ReflectSoftware.Insight.Extensions.PostSharp
 // Author           : ReflectSoftware Inc.
 // Created          : 03-19-2014
-// Last Modified On : 03-28-2014
+// Last Modified On : 10-01-2018
 // ***********************************************************************
 // <copyright file="RITraceFieldAttribute.cs" company="ReflectSoftware, Inc.">
 //     Copyright (c) ReflectSoftware, Inc.. All rights reserved.
@@ -16,38 +16,16 @@ using PostSharp.Aspects;
 using PostSharp.Reflection;
 
 using ReflectSoftware.Insight;
+using ReflectSoftware.Insight.Common;
 
-/// <summary>
-/// Namespace - PostSharp
-/// </summary>
 namespace ReflectSoftware.Insight.Extensions.PostSharp
 {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   RITraceFieldDispatchType Enumeration. </summary>
-    ///
-    /// <remarks>   ReflectInsight Version 5.3. </remarks>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public enum RITraceFieldDispatchType
     {
-        /// <summary>
-        /// Log
-        /// </summary>
         Log = 0,
-        /// <summary>
-        /// Watch
-        /// </summary>
         Watch = 1,
-        /// <summary>
-        /// Both
-        /// </summary>
         Both = 2
     }
-
-    ///------------------------------------------------------------------------
-    /// <summary>   RITraceFieldAttribute Class. </summary>
-    /// <seealso cref="T:PostSharp.Aspects.LocationInterceptionAspect"/>
-    ///------------------------------------------------------------------------
 
     [Serializable]
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
@@ -55,7 +33,7 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
     {    
         private readonly String ExtensionName;
         private readonly RITraceFieldDispatchType DispatchType;
-        private ReflectInsight ReflectInsightInstance;
+        private IReflectInsight ReflectInsightInstance;
         private String Label;
                 
         ///--------------------------------------------------------------------
@@ -73,6 +51,7 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
             DispatchType = dispatchType;
             Label = label ?? String.Empty;
         }
+
         ///--------------------------------------------------------------------
         /// <summary>
         /// Initializes a new instance of the <see cref="RITraceFieldAttribute"/> class.
@@ -117,8 +96,11 @@ namespace ReflectSoftware.Insight.Extensions.PostSharp
             base.CompileTimeInitialize(targetLocation, aspectInfo);
 
             if (String.Compare(Label.Trim(), String.Empty, false) == 0)
+            {
                 Label = targetLocation.FieldInfo.Name;
+            }
         }
+
         ///--------------------------------------------------------------------
         /// <summary>   Initializes the current aspect. </summary>
         ///

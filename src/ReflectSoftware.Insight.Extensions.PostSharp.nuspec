@@ -19,11 +19,11 @@ http://www.ReflectSoftware.com/Public/Download.aspx
 You can view your EntLib messages in realtime, in a rich viewer that allows you to filter out and search for what really matters to you.</description>
         <summary>ReflectInsight PostSharp logging extention makes it easy to integrate ReflectInsight into your existing application logging infrastructure and leverage the power of the ReflectInsight log viewer.</summary>
         <releaseNotes></releaseNotes>
-        <copyright>© 2016 ReflectSoftware Inc.</copyright>
+        <copyright>© 2018 ReflectSoftware Inc.</copyright>
         <tags>reflectinsight logging log logfiles events postsharp aop aspect interceptor interception dependency di monitoring instrumentation exception handling structured tracing trace debug diagnostic</tags>
         <dependencies>
-            <dependency id="PostSharp" version="4.2.27" />
-            <dependency id="ReflectSoftware.Insight" version="5.6.1.2" />
+            <dependency id="PostSharp" version="6.0.27" />
+            <dependency id="ReflectSoftware.Insight" version="5.7.1.1" />
         </dependencies>
         <references>
             <reference file="ReflectSoftware.Insight.Extensions.PostSharp.dll" />
