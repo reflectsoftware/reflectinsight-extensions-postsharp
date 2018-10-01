@@ -4,8 +4,9 @@
 [![License](https://img.shields.io/:license-MS--PL-blue.svg)](https://github.com/reflectsoftware/reflectinsight-extensions-postsharp/license.md)
 [![Release](https://img.shields.io/github/release/reflectsoftware/reflectinsight-extensions-PostSharp.svg)](https://github.com/reflectsoftware/reflectinsight-extensions-PostSharp/releases/latest)
 [![NuGet Version](http://img.shields.io/nuget/v/reflectsoftware.insight.extensions.PostSharp.svg?style=flat)](http://www.nuget.org/packages/ReflectSoftware.Insight.Extensions.PostSharp/)
-[![NuGet](https://img.shields.io/nuget/dt/reflectsoftware.insight.extensions.PostSharp.svg)](http://www.nuget.org/packages/ReflectSoftware.Insight.Extensions.PostSharp/)
 [![Stars](https://img.shields.io/github/stars/reflectsoftware/reflectinsight-extensions-PostSharp.svg)](https://github.com/reflectsoftware/reflectinsight-extensions-PostSharp/stargazers)
+
+**Package** - [ReflectSoftware.Insight.Extensions.PostSharp](http://www.nuget.org/packages/ReflectSoftware.Insight.Extensions.PostSharp/) | **Platforms** - .NET 4.5.1 and above
 
 ## Overview ##
 
